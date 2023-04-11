@@ -11,7 +11,7 @@ import static org.springframework.http.HttpStatus.*;
 @RestController
 @RequestMapping("api/auth")
 @RequiredArgsConstructor
-@CrossOrigin(origins = "*")
+//@CrossOrigin(origins = "*")
 public class AuthController {
 
     private final UserService service;
