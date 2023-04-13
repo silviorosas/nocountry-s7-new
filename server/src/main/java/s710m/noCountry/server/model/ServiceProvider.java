@@ -72,4 +72,11 @@ public class ServiceProvider {
     @JsonIgnore
     @OneToMany(mappedBy = "serviceProvider",fetch = FetchType.LAZY)
     private Set<Appointment> appointment= new HashSet<>();
+
+    @OneToMany(mappedBy = "serviceProvider")
+    @JsonIgnoreProperties("serviceProvider")
+    private List<Review> reviews = new ArrayList<>();
+
+    @Column(name = "score")
+    private Double score;
 }

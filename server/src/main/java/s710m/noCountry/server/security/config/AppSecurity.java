@@ -22,7 +22,7 @@ public class AppSecurity {
     private final AuthenticationProvider authenticationProvider;
     private final AccessDeniedHandler accessDeniedHandler;
     private final AuthenticationEntryPoint authenticationEntryPoint;
-    private static final String[] PERMIT_ALL = {"/api/auth/**", "/api/service-categories/**"};
+    private static final String[] PERMIT_ALL = {"/api/auth/**", "/api/service-categories/**", "/api/review/**"};
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {

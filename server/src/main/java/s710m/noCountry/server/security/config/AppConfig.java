@@ -25,7 +25,6 @@ public class AppConfig {
 
     private final UserRepository repository;
     protected final String[] ALLOWED_ORIGINS = {
-
             "*"
     };
     protected final String[] ALLOWED_METHODS = {
