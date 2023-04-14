@@ -6,11 +6,14 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import s710m.noCountry.server.model.ServiceCategory;
 import s710m.noCountry.server.model.dto.ServiceCategoryResponseDto;
 import s710m.noCountry.server.model.dto.ServiceProviderResponseDto;
+import s710m.noCountry.server.repository.ServiceCategoryRepository;
 import s710m.noCountry.server.service.ServiceCategoryService;
 
 import java.util.List;
+import java.util.Optional;
 
 import static org.springframework.http.HttpStatus.OK;
 
@@ -21,6 +24,8 @@ public class ServiceCategoryController {
 
     private final ServiceCategoryService service;
 
+    private final ServiceCategoryRepository repo;
+
     @GetMapping
     public ResponseEntity<List<ServiceCategoryResponseDto>> getAllServiceCategory(){
         return ResponseEntity.status(OK).body(service.getAllServiceCategories());
@@ -30,5 +35,13 @@ public class ServiceCategoryController {
     public ResponseEntity<List<ServiceProviderResponseDto>> getAllServiceProvidersByCategory(@PathVariable Long id){
         return ResponseEntity.status(OK).body(service.getAllServiceProvidersByCategory(id));
     }
+
+    @GetMapping("/id/{id}")
+    public Optional<ServiceCategory> getAllServiceProvidersId(@PathVariable Long id){
+        return repo.findById(id);
+    }
+
+
+
 
 }

@@ -1,11 +1,14 @@
 package s710m.noCountry.server.service.serviceImpl;
 
+import jdk.jfr.Category;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import s710m.noCountry.server.configException.EntityNotFoundException;
 import s710m.noCountry.server.mapper.ServiceCategoryMapper;
 import s710m.noCountry.server.mapper.ServiceProviderMapper;
 import s710m.noCountry.server.model.ServiceCategory;
+import s710m.noCountry.server.model.ServiceProvider;
 import s710m.noCountry.server.model.dto.ServiceCategoryResponseDto;
 import s710m.noCountry.server.model.dto.ServiceProviderResponseDto;
 import s710m.noCountry.server.repository.ServiceCategoryRepository;
@@ -44,6 +47,14 @@ public class ServiceCategoryServiceImpl implements ServiceCategoryService {
         return repository.findById(id).orElseThrow(
                 () -> new EntityNotFoundException("Category not found.")
         );
+    }
+
+    @Override
+    @Transactional
+    public void addServiceProvider(ServiceProvider serviceProvider, Long idCategory) {
+        ServiceCategory serviceCategory = getById(idCategory);
+        serviceCategory.getServiceProviders().add(serviceProvider);
+        repository.save(serviceCategory);
     }
 
 

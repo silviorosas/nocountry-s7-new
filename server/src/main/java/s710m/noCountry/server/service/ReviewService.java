@@ -16,6 +16,7 @@ public interface ReviewService {
     ReviewResponseDto updateReview(ReviewUpdateDto dto, Long id);
     Review getById(Long id);
     List<ReviewResponseProfileDto> getAllReviewsByServiceProvider(Long id);
+    List<Review> getAllReviews();
     ReviewResponseDto getByIdDto(Long id);
     void deleteReview (Long id);
 

@@ -87,4 +87,9 @@ public class User implements UserDetails {
     public boolean isEnabled() {
         return true;
     }
+
+    public User(String email, String password){
+        this.email = email;
+        this.password = password;
+    }
 }

@@ -16,6 +16,6 @@ public class ReviewResponseProfileDto {
     private String comment;
     private Double rating;
     private String nameClient;
-    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss")
+    @JsonFormat(pattern="yyyy-MM-dd")
     private LocalDateTime creationDate;
 }

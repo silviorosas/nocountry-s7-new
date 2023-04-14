@@ -38,4 +38,9 @@ public class Client {
     @JsonIgnore
     @OneToMany(mappedBy = "client",fetch = FetchType.LAZY, orphanRemoval = true, cascade = {CascadeType.REMOVE, CascadeType.MERGE})
     private Set<Appointment> appointment=new HashSet<>();
+
+    public Client(String fullName, String country) {
+        this.fullName = fullName;
+        this.country = country;
+    }
 }

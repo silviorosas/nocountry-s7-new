@@ -79,4 +79,13 @@ public class ServiceProvider {
 
     @Column(name = "score")
     private Double score;
+
+    public ServiceProvider(String fullName, String country, String experienceYears, String kmAround, String profileDescription, User user) {
+        this.fullName = fullName;
+        this.country = country;
+        this.experienceYears = experienceYears;
+        this.kmAround = kmAround;
+        this.profileDescription = profileDescription;
+        this.user = user;
+    }
 }

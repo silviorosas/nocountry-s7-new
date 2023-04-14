@@ -67,6 +67,11 @@ public class ReviewServiceImpl implements ReviewService {
     }
 
     @Override
+    public List<Review> getAllReviews() {
+        return repository.findAll();
+    }
+
+    @Override
     public ReviewResponseDto getByIdDto(Long id) {
         return mapper.toDto(getById(id));
     }
