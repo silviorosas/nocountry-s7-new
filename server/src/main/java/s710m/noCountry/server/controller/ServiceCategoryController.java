@@ -24,7 +24,7 @@ public class ServiceCategoryController {
 
     private final ServiceCategoryService service;
 
-    private final ServiceCategoryRepository repo;
+
 
     @GetMapping
     public ResponseEntity<List<ServiceCategoryResponseDto>> getAllServiceCategory(){
@@ -36,10 +36,7 @@ public class ServiceCategoryController {
         return ResponseEntity.status(OK).body(service.getAllServiceProvidersByCategory(id));
     }
 
-    @GetMapping("/id/{id}")
-    public Optional<ServiceCategory> getAllServiceProvidersId(@PathVariable Long id){
-        return repo.findById(id);
-    }
+
 
 
 
