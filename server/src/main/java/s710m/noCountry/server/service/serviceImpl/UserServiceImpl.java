@@ -25,6 +25,7 @@ import s710m.noCountry.server.service.UserService;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 import java.util.Locale;
 import java.util.stream.Collectors;
 
@@ -51,7 +52,7 @@ public class UserServiceImpl implements UserService, UserDetailsService {
         );
         User user = repository.findByEmail(dto.getEmail()).orElseThrow();
         String authority = user.getAuthorities().stream().map(Authority::getAuthority).collect(Collectors.toList()).get(0);
-        if (authority.equals(NameAuthority.ROLE_CLIENT.name())){
+        if (authority.equals(NameAuthority.CLIENT.name())){
             String token = jwtService.generateToken(user);
             return mapper.toClientDto(user, user.getClient(),token);
         }
@@ -82,6 +83,21 @@ public class UserServiceImpl implements UserService, UserDetailsService {
         Client savedClient = clientRepository.save(client);
         savedUserClient.setClient(savedClient);
         repository.save(savedUserClient);
+    }
+
+    @Override
+    public void dataAdminLoad(String email, String password) {
+        User user = new User(email,password);
+        user.getAuthorities().add(authorityRepository.findById(3L).get());
+        repository.save(user);
+    }
+
+    @Override
+    public List<User> getAllAdminUsers(String authority) {
+        return repository.findAll().stream().filter(u ->
+                u.getAuthorities().stream()
+                        .filter(a -> a.getAuthority().equals(authority))
+                        .collect(Collectors.toList()).size()>0).collect(Collectors.toList());
     }
 
     @Override

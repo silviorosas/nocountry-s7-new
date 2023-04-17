@@ -27,6 +27,12 @@ public class HandlerException extends ResponseEntityExceptionHandler {
         return handleExceptionInternal(ex, response, new HttpHeaders(), HttpStatus.BAD_REQUEST ,request);
     }
 
+    @ExceptionHandler(value = {ForbiddenException.class})
+    protected ResponseEntity<Object> handleForbidden(ForbiddenException ex, WebRequest request) {
+        String response = ex.getMessage();
+        return handleExceptionInternal(ex, response, new HttpHeaders(), HttpStatus.FORBIDDEN ,request);
+    }
+
     protected ResponseEntity<Map<String,String>> handleInvalidArgument(MethodArgumentNotValidException ex) {
         Map<String,String> errorMap = new HashMap<>();
         ex.getBindingResult().getAllErrors().forEach( error -> {

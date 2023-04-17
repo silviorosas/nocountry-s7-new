@@ -13,6 +13,8 @@ import s710m.noCountry.server.repository.ServiceProviderRepository;
 import s710m.noCountry.server.repository.UserRepository;
 import s710m.noCountry.server.service.UserService;
 
+import java.util.stream.Collectors;
+
 @Component
 @RequiredArgsConstructor
 public class UserDataLoader implements CommandLineRunner {
@@ -26,19 +28,29 @@ public class UserDataLoader implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
         loadRoles();
+        loadUserAdmin();
         loadUserClient();
         loadUserServiceProvider();
     }
 
     private void loadRoles(){
         if(authorityRepository.findAll().isEmpty()){
-            Authority client = new Authority(1L, NameAuthority.ROLE_CLIENT,"");
-            Authority serviceProvider = new Authority(2L, NameAuthority.ROLE_SERVICE_PROVIDER,"");
+            Authority client = new Authority(1L, NameAuthority.CLIENT,"");
+            Authority serviceProvider = new Authority(2L, NameAuthority.SERVICE_PROVIDER,"");
+            Authority admin = new Authority(3L, NameAuthority.ADMIN,"");
             authorityRepository.save(client);
             authorityRepository.save(serviceProvider);
+            authorityRepository.save(admin);
         }
     }
 
+    @Transactional
+    private void loadUserAdmin(){
+        if(service.getAllAdminUsers(NameAuthority.ADMIN.name()).isEmpty()){
+            service.dataAdminLoad("usertestAdmin1@htm.cuak", encoder.encode("1234"));
+            service.dataAdminLoad("usertestAdmin2@htm.cuak", encoder.encode("1234"));
+        }
+    }
     @Transactional
     private void loadUserClient(){
         if(clientRepository.findAll().isEmpty()){
@@ -171,7 +183,7 @@ public class UserDataLoader implements CommandLineRunner {
                             "I started my career as an apprentice, learning from experienced elderly caregivers " +
                             "and gradually developing my skills and knowledge.",
                     5L,
-                    "usertest1@htm.cuak",
+                    "usertest9@htm.cuak",
                     encoder.encode("1234")
 
             );
@@ -184,7 +196,7 @@ public class UserDataLoader implements CommandLineRunner {
                             "I started my career as an apprentice, learning from experienced elderly caregivers " +
                             "and gradually developing my skills and knowledge.",
                     5L,
-                    "usertest2@htm.cuak",
+                    "usertest10@htm.cuak",
                     encoder.encode("1234")
 
             );
@@ -197,7 +209,7 @@ public class UserDataLoader implements CommandLineRunner {
                             "I started my career as an apprentice, learning from experienced electricians " +
                             "and gradually developing my skills and knowledge.",
                     6L,
-                    "usertest3@htm.cuak",
+                    "usertest11@htm.cuak",
                     encoder.encode("1234")
 
             );
@@ -210,7 +222,7 @@ public class UserDataLoader implements CommandLineRunner {
                             "I started my career as an apprentice, learning from experienced electricians " +
                             "and gradually developing my skills and knowledge.",
                     6L,
-                    "usertest4@htm.cuak",
+                    "usertest12@htm.cuak",
                     encoder.encode("1234")
 
             );
@@ -223,7 +235,7 @@ public class UserDataLoader implements CommandLineRunner {
                             "I started my career as an apprentice, learning from experienced floor workers " +
                             "and gradually developing my skills and knowledge.",
                     7L,
-                    "usertest5@htm.cuak",
+                    "usertest13@htm.cuak",
                     encoder.encode("1234")
 
             );
@@ -236,7 +248,7 @@ public class UserDataLoader implements CommandLineRunner {
                             "I started my career as an apprentice, learning from experienced floor workers " +
                             "and gradually developing my skills and knowledge.",
                     7L,
-                    "usertest6@htm.cuak",
+                    "usertest14@htm.cuak",
                     encoder.encode("1234")
 
             );
@@ -249,7 +261,7 @@ public class UserDataLoader implements CommandLineRunner {
                             "I started my career as an apprentice, learning from experienced glaziers " +
                             "and gradually developing my skills and knowledge.",
                     8L,
-                    "usertest7@htm.cuak",
+                    "usertest15@htm.cuak",
                     encoder.encode("1234")
 
             );
@@ -262,7 +274,7 @@ public class UserDataLoader implements CommandLineRunner {
                             "I started my career as an apprentice, learning from experienced glaziers " +
                             "and gradually developing my skills and knowledge.",
                     8L,
-                    "usertest8@htm.cuak",
+                    "usertest16@htm.cuak",
                     encoder.encode("1234")
 
             );
@@ -275,7 +287,7 @@ public class UserDataLoader implements CommandLineRunner {
                             "I started my career as an apprentice, learning from experienced heater repairmen " +
                             "and gradually developing my skills and knowledge.",
                     9L,
-                    "usertest1@htm.cuak",
+                    "usertest17@htm.cuak",
                     encoder.encode("1234")
 
             );
@@ -288,7 +300,7 @@ public class UserDataLoader implements CommandLineRunner {
                             "I started my career as an apprentice, learning from experienced heater repairmen " +
                             "and gradually developing my skills and knowledge.",
                     9L,
-                    "usertest2@htm.cuak",
+                    "usertest18@htm.cuak",
                     encoder.encode("1234")
 
             );
@@ -301,7 +313,7 @@ public class UserDataLoader implements CommandLineRunner {
                             "I started my career as an apprentice, learning from experienced home repairmen " +
                             "and gradually developing my skills and knowledge.",
                     10L,
-                    "usertest3@htm.cuak",
+                    "usertest19@htm.cuak",
                     encoder.encode("1234")
 
             );
@@ -314,7 +326,7 @@ public class UserDataLoader implements CommandLineRunner {
                             "I started my career as an apprentice, learning from experienced home repairmen " +
                             "and gradually developing my skills and knowledge.",
                     10L,
-                    "usertest4@htm.cuak",
+                    "usertest20@htm.cuak",
                     encoder.encode("1234")
 
             );
@@ -327,7 +339,7 @@ public class UserDataLoader implements CommandLineRunner {
                             "I started my career as an apprentice, learning from experienced workers " +
                             "and gradually developing my skills and knowledge.",
                     11L,
-                    "usertest5@htm.cuak",
+                    "usertest21@htm.cuak",
                     encoder.encode("1234")
 
             );
@@ -340,7 +352,7 @@ public class UserDataLoader implements CommandLineRunner {
                             "I started my career as an apprentice, learning from experienced workers " +
                             "and gradually developing my skills and knowledge.",
                     11L,
-                    "usertest6@htm.cuak",
+                    "usertest22@htm.cuak",
                     encoder.encode("1234")
 
             );
@@ -353,7 +365,7 @@ public class UserDataLoader implements CommandLineRunner {
                             "I started my career as an apprentice, learning from experienced nannies " +
                             "and gradually developing my skills and knowledge.",
                     12L,
-                    "usertest7@htm.cuak",
+                    "usertest23@htm.cuak",
                     encoder.encode("1234")
 
             );
@@ -366,7 +378,7 @@ public class UserDataLoader implements CommandLineRunner {
                             "I started my career as an apprentice, learning from experienced nannies " +
                             "and gradually developing my skills and knowledge.",
                     12L,
-                    "usertest8@htm.cuak",
+                    "usertest24@htm.cuak",
                     encoder.encode("1234")
 
             );
@@ -379,7 +391,7 @@ public class UserDataLoader implements CommandLineRunner {
                             "I started my career as an apprentice, learning from experienced painters " +
                             "and gradually developing my skills and knowledge.",
                     13L,
-                    "usertest1@htm.cuak",
+                    "usertest25@htm.cuak",
                     encoder.encode("1234")
 
             );
@@ -392,7 +404,7 @@ public class UserDataLoader implements CommandLineRunner {
                             "I started my career as an apprentice, learning from experienced painters " +
                             "and gradually developing my skills and knowledge.",
                     13L,
-                    "usertest2@htm.cuak",
+                    "usertest26@htm.cuak",
                     encoder.encode("1234")
 
             );
@@ -405,7 +417,7 @@ public class UserDataLoader implements CommandLineRunner {
                             "I started my career as an apprentice, learning from experienced plumbers " +
                             "and gradually developing my skills and knowledge.",
                     14L,
-                    "usertest3@htm.cuak",
+                    "usertest27@htm.cuak",
                     encoder.encode("1234")
 
             );
@@ -418,7 +430,7 @@ public class UserDataLoader implements CommandLineRunner {
                             "I started my career as an apprentice, learning from experienced plumbers " +
                             "and gradually developing my skills and knowledge.",
                     14L,
-                    "usertest4@htm.cuak",
+                    "usertest28@htm.cuak",
                     encoder.encode("1234")
 
             );
@@ -431,7 +443,7 @@ public class UserDataLoader implements CommandLineRunner {
                             "I started my career as an apprentice, learning from experienced tilers " +
                             "and gradually developing my skills and knowledge.",
                     15L,
-                    "usertest5@htm.cuak",
+                    "usertest29@htm.cuak",
                     encoder.encode("1234")
 
             );
@@ -444,7 +456,7 @@ public class UserDataLoader implements CommandLineRunner {
                             "I started my career as an apprentice, learning from experienced tilers " +
                             "and gradually developing my skills and knowledge.",
                     15L,
-                    "usertest6@htm.cuak",
+                    "usertest30@htm.cuak",
                     encoder.encode("1234")
 
             );
@@ -457,7 +469,7 @@ public class UserDataLoader implements CommandLineRunner {
                             "I started my career as an apprentice, learning from experienced wall coverings " +
                             "and gradually developing my skills and knowledge.",
                     16L,
-                    "usertest7@htm.cuak",
+                    "usertest31@htm.cuak",
                     encoder.encode("1234")
 
             );
@@ -470,7 +482,7 @@ public class UserDataLoader implements CommandLineRunner {
                             "I started my career as an apprentice, learning from experienced wall coverings " +
                             "and gradually developing my skills and knowledge.",
                     16L,
-                    "usertest8@htm.cuak",
+                    "usertest32@htm.cuak",
                     encoder.encode("1234")
 
             );
@@ -483,7 +495,7 @@ public class UserDataLoader implements CommandLineRunner {
                             "I started my career as an apprentice, learning from experienced wallpaper workers " +
                             "and gradually developing my skills and knowledge.",
                     17L,
-                    "usertest1@htm.cuak",
+                    "usertest33@htm.cuak",
                     encoder.encode("1234")
 
             );
@@ -496,7 +508,7 @@ public class UserDataLoader implements CommandLineRunner {
                             "I started my career as an apprentice, learning from experienced wallpaper workers " +
                             "and gradually developing my skills and knowledge.",
                     17L,
-                    "usertest2@htm.cuak",
+                    "usertest34@htm.cuak",
                     encoder.encode("1234")
 
             );
@@ -509,7 +521,7 @@ public class UserDataLoader implements CommandLineRunner {
                             "I started my career as an apprentice, learning from experienced washer technicians " +
                             "and gradually developing my skills and knowledge.",
                     18L,
-                    "usertest3@htm.cuak",
+                    "usertest35@htm.cuak",
                     encoder.encode("1234")
 
             );
@@ -522,7 +534,7 @@ public class UserDataLoader implements CommandLineRunner {
                             "I started my career as an apprentice, learning from experienced washer technicians " +
                             "and gradually developing my skills and knowledge.",
                     18L,
-                    "usertest4@htm.cuak",
+                    "usertest36@htm.cuak",
                     encoder.encode("1234")
 
             );

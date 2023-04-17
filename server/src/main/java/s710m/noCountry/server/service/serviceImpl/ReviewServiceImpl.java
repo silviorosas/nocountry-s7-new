@@ -4,9 +4,11 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import s710m.noCountry.server.configException.EntityNotFoundException;
+import s710m.noCountry.server.configException.ForbiddenException;
 import s710m.noCountry.server.mapper.ReviewMapper;
 import s710m.noCountry.server.model.Review;
 import s710m.noCountry.server.model.ServiceProvider;
+import s710m.noCountry.server.model.User;
 import s710m.noCountry.server.model.dto.ReviewRequestDto;
 import s710m.noCountry.server.model.dto.ReviewResponseDto;
 import s710m.noCountry.server.model.dto.ReviewResponseProfileDto;
@@ -30,11 +32,22 @@ public class ReviewServiceImpl implements ReviewService {
 
     @Override
     @Transactional
-    public ReviewResponseDto addReview(ReviewRequestDto dto) {
+    public ReviewResponseDto addReview(ReviewRequestDto dto, User loggedUser) {
+        Review review = mapper.toEntity(dto);
+        if(!loggedUser.getUsername().equals(review.getClient().getUser().getUsername()))
+            throw new ForbiddenException("You do not have authorization");
+        Review savedReview = repository.save(review);
+        addRatingProm(review.getServiceProvider());
+        serviceProviderRepository.save(review.getServiceProvider());
+        return mapper.toDto(savedReview);
+    }
+
+    @Override
+    @Transactional
+    public void reviewDataLoad(ReviewRequestDto dto) {
         Review review = repository.save(mapper.toEntity(dto));
         addRatingProm(review.getServiceProvider());
         serviceProviderRepository.save(review.getServiceProvider());
-        return mapper.toDto(review);
     }
 
     @Override
@@ -46,9 +59,11 @@ public class ReviewServiceImpl implements ReviewService {
     }
 
     @Override
-    public ReviewResponseDto updateReview(ReviewUpdateDto dto, Long id) {
-        Review review = repository.save(mapper.toUpdate(dto, id));
-        return mapper.toDto(review);
+    public ReviewResponseDto updateReview(ReviewUpdateDto dto, Long id, User loggedUser) {
+        Review review = mapper.toUpdate(dto, id);
+        if(!loggedUser.getUsername().equals(review.getClient().getUser().getUsername()))
+            throw new ForbiddenException("You do not have authorization");
+        return mapper.toDto(repository.save(review));
     }
 
     @Override
@@ -72,13 +87,18 @@ public class ReviewServiceImpl implements ReviewService {
     }
 
     @Override
-    public ReviewResponseDto getByIdDto(Long id) {
-        return mapper.toDto(getById(id));
+    public ReviewResponseDto getByIdDto(Long id, User loggedUser) {
+        Review review = getById(id);
+        if(!loggedUser.getUsername().equals(review.getClient().getUser().getUsername()))
+            throw new ForbiddenException("You do not have authorization");
+        return mapper.toDto(review);
     }
 
     @Override
-    public void deleteReview(Long id) {
-        getById(id);
+    public void deleteReview(Long id, User loggedUser) {
+        Review review = getById(id);
+        if(!loggedUser.getUsername().equals(review.getClient().getUser().getUsername()))
+            throw new ForbiddenException("You do not have authorization");
         repository.deleteById(id);
     }
 

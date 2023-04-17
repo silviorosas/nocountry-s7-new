@@ -25,433 +25,433 @@ public class UserReviewDataLoader implements CommandLineRunner {
 
     private void dataLoad(){
         if(service.getAllReviews().isEmpty()){
-            service.addReview(
+            service.reviewDataLoad(
                     new ReviewRequestDto(
                             comment1,
                             4.5,
                             1L,
                             1L));
-            service.addReview(
+            service.reviewDataLoad(
                     new ReviewRequestDto(
                             comment2,
                             4.0,
                             2L,
                             1L));
-            service.addReview(
+            service.reviewDataLoad(
                     new ReviewRequestDto(
                             comment1,
                             5.0,
                             1L,
                             2L));
-            service.addReview(
+            service.reviewDataLoad(
                     new ReviewRequestDto(
                             comment2,
                             4.5,
                             2L,
                             2L));
-            service.addReview(
+            service.reviewDataLoad(
                     new ReviewRequestDto(
                             comment1,
                             4.5,
                             1L,
                             3L));
-            service.addReview(
+            service.reviewDataLoad(
                     new ReviewRequestDto(
                             comment2,
                             3.5,
                             2L,
                             3L));
-            service.addReview(
+            service.reviewDataLoad(
                     new ReviewRequestDto(
                             comment1,
                             4.0,
                             1L,
                             4L));
-            service.addReview(
+            service.reviewDataLoad(
                     new ReviewRequestDto(
                             comment2,
                             3.0,
                             2L,
                             4L));
-            service.addReview(
+            service.reviewDataLoad(
                     new ReviewRequestDto(
                             comment1,
                             4.5,
                             1L,
                             5L));
-            service.addReview(
+            service.reviewDataLoad(
                     new ReviewRequestDto(
                             comment2,
                             4.5,
                             2L,
                             5L));
-            service.addReview(
+            service.reviewDataLoad(
                     new ReviewRequestDto(
                             comment1,
                             4.5,
                             1L,
                             6L));
-            service.addReview(
+            service.reviewDataLoad(
                     new ReviewRequestDto(
                             comment2,
                             5.0,
                             2L,
                             6L));
-            service.addReview(
+            service.reviewDataLoad(
                     new ReviewRequestDto(
                             comment1,
                             4.5,
                             1L,
                             7L));
-            service.addReview(
+            service.reviewDataLoad(
                     new ReviewRequestDto(
                             comment2,
                             4.0,
                             2L,
                             7L));
-            service.addReview(
+            service.reviewDataLoad(
                     new ReviewRequestDto(
                             comment1,
                             3.5,
                             1L,
                             8L));
-            service.addReview(
+            service.reviewDataLoad(
                     new ReviewRequestDto(
                             comment2,
                             4.0,
                             2L,
                             8L));
-            service.addReview(
+            service.reviewDataLoad(
                     new ReviewRequestDto(
                             comment1,
                             5.0,
                             1L,
                             9L));
-            service.addReview(
+            service.reviewDataLoad(
                     new ReviewRequestDto(
                             comment2,
                             4.5,
                             2L,
                             9L));
-            service.addReview(
+            service.reviewDataLoad(
                     new ReviewRequestDto(
                             comment1,
                             4.5,
                             1L,
                             10L));
-            service.addReview(
+            service.reviewDataLoad(
                     new ReviewRequestDto(
                             comment2,
                             4.0,
                             2L,
                             10L));
-            service.addReview(
+            service.reviewDataLoad(
                     new ReviewRequestDto(
                             comment1,
                             3.5,
                             1L,
                             11L));
-            service.addReview(
+            service.reviewDataLoad(
                     new ReviewRequestDto(
                             comment2,
                             3.0,
                             2L,
                             11L));
-            service.addReview(
+            service.reviewDataLoad(
                     new ReviewRequestDto(
                             comment1,
                             4.5,
                             1L,
                             12L));
-            service.addReview(
+            service.reviewDataLoad(
                     new ReviewRequestDto(
                             comment2,
                             5.0,
                             2L,
                             12L));
-            service.addReview(
+            service.reviewDataLoad(
                     new ReviewRequestDto(
                             comment1,
                             4.0,
                             1L,
                             13L));
-            service.addReview(
+            service.reviewDataLoad(
                     new ReviewRequestDto(
                             comment2,
                             4.5,
                             2L,
                             13L));
-            service.addReview(
+            service.reviewDataLoad(
                     new ReviewRequestDto(
                             comment1,
                             3.5,
                             1L,
                             14L));
-            service.addReview(
+            service.reviewDataLoad(
                     new ReviewRequestDto(
                             comment2,
                             4.5,
                             2L,
                             14L));
-            service.addReview(
+            service.reviewDataLoad(
                     new ReviewRequestDto(
                             comment1,
                             4.0,
                             1L,
                             15L));
-            service.addReview(
+            service.reviewDataLoad(
                     new ReviewRequestDto(
                             comment2,
                             4.0,
                             2L,
                             15L));
-            service.addReview(
+            service.reviewDataLoad(
                     new ReviewRequestDto(
                             comment1,
                             4.0,
                             1L,
                             16L));
-            service.addReview(
+            service.reviewDataLoad(
                     new ReviewRequestDto(
                             comment2,
                             4.5,
                             2L,
                             16L));
-            service.addReview(
+            service.reviewDataLoad(
                     new ReviewRequestDto(
                             comment1,
                             5.0,
                             1L,
                             17L));
-            service.addReview(
+            service.reviewDataLoad(
                     new ReviewRequestDto(
                             comment2,
                             3.5,
                             2L,
                             17L));
-            service.addReview(
+            service.reviewDataLoad(
                     new ReviewRequestDto(
                             comment1,
                             5.0,
                             1L,
                             18L));
-            service.addReview(
+            service.reviewDataLoad(
                     new ReviewRequestDto(
                             comment2,
                             4.5,
                             2L,
                             18L));
-            service.addReview(
+            service.reviewDataLoad(
                     new ReviewRequestDto(
                             comment1,
                             4.5,
                             1L,
                             19L));
-            service.addReview(
+            service.reviewDataLoad(
                     new ReviewRequestDto(
                             comment2,
                             4.0,
                             2L,
                             19L));
-            service.addReview(
+            service.reviewDataLoad(
                     new ReviewRequestDto(
                             comment1,
                             5.0,
                             1L,
                             20L));
-            service.addReview(
+            service.reviewDataLoad(
                     new ReviewRequestDto(
                             comment2,
                             4.5,
                             2L,
                             20L));
-            service.addReview(
+            service.reviewDataLoad(
                     new ReviewRequestDto(
                             comment1,
                             4.5,
                             1L,
                             21L));
-            service.addReview(
+            service.reviewDataLoad(
                     new ReviewRequestDto(
                             comment2,
                             3.5,
                             2L,
                             21L));
-            service.addReview(
+            service.reviewDataLoad(
                     new ReviewRequestDto(
                             comment1,
                             4.0,
                             1L,
                             22L));
-            service.addReview(
+            service.reviewDataLoad(
                     new ReviewRequestDto(
                             comment2,
                             3.0,
                             2L,
                             22L));
-            service.addReview(
+            service.reviewDataLoad(
                     new ReviewRequestDto(
                             comment1,
                             4.5,
                             1L,
                             23L));
-            service.addReview(
+            service.reviewDataLoad(
                     new ReviewRequestDto(
                             comment2,
                             4.5,
                             2L,
                             23L));
-            service.addReview(
+            service.reviewDataLoad(
                     new ReviewRequestDto(
                             comment1,
                             4.5,
                             1L,
                             24L));
-            service.addReview(
+            service.reviewDataLoad(
                     new ReviewRequestDto(
                             comment2,
                             5.0,
                             2L,
                             24L));
-            service.addReview(
+            service.reviewDataLoad(
                     new ReviewRequestDto(
                             comment1,
                             4.5,
                             1L,
                             25L));
-            service.addReview(
+            service.reviewDataLoad(
                     new ReviewRequestDto(
                             comment2,
                             4.0,
                             2L,
                             25L));
-            service.addReview(
+            service.reviewDataLoad(
                     new ReviewRequestDto(
                             comment1,
                             3.5,
                             1L,
                             26L));
-            service.addReview(
+            service.reviewDataLoad(
                     new ReviewRequestDto(
                             comment2,
                             4.0,
                             2L,
                             26L));
-            service.addReview(
+            service.reviewDataLoad(
                     new ReviewRequestDto(
                             comment1,
                             5.0,
                             1L,
                             27L));
-            service.addReview(
+            service.reviewDataLoad(
                     new ReviewRequestDto(
                             comment2,
                             4.5,
                             2L,
                             27L));
-            service.addReview(
+            service.reviewDataLoad(
                     new ReviewRequestDto(
                             comment1,
                             4.5,
                             1L,
                             28L));
-            service.addReview(
+            service.reviewDataLoad(
                     new ReviewRequestDto(
                             comment2,
                             4.0,
                             2L,
                             28L));
-            service.addReview(
+            service.reviewDataLoad(
                     new ReviewRequestDto(
                             comment1,
                             3.5,
                             1L,
                             29L));
-            service.addReview(
+            service.reviewDataLoad(
                     new ReviewRequestDto(
                             comment2,
                             3.0,
                             2L,
                             29L));
-            service.addReview(
+            service.reviewDataLoad(
                     new ReviewRequestDto(
                             comment1,
                             4.5,
                             1L,
                             30L));
-            service.addReview(
+            service.reviewDataLoad(
                     new ReviewRequestDto(
                             comment2,
                             5.0,
                             2L,
                             30L));
-            service.addReview(
+            service.reviewDataLoad(
                     new ReviewRequestDto(
                             comment1,
                             4.0,
                             1L,
                             31L));
-            service.addReview(
+            service.reviewDataLoad(
                     new ReviewRequestDto(
                             comment2,
                             4.5,
                             2L,
                             31L));
-            service.addReview(
+            service.reviewDataLoad(
                     new ReviewRequestDto(
                             comment1,
                             3.5,
                             1L,
                             32L));
-            service.addReview(
+            service.reviewDataLoad(
                     new ReviewRequestDto(
                             comment2,
                             4.5,
                             2L,
                             32L));
-            service.addReview(
+            service.reviewDataLoad(
                     new ReviewRequestDto(
                             comment1,
                             4.0,
                             1L,
                             33L));
-            service.addReview(
+            service.reviewDataLoad(
                     new ReviewRequestDto(
                             comment2,
                             4.0,
                             2L,
                             33L));
-            service.addReview(
+            service.reviewDataLoad(
                     new ReviewRequestDto(
                             comment1,
                             4.0,
                             1L,
                             34L));
-            service.addReview(
+            service.reviewDataLoad(
                     new ReviewRequestDto(
                             comment2,
                             4.5,
                             2L,
                             34L));
-            service.addReview(
+            service.reviewDataLoad(
                     new ReviewRequestDto(
                             comment1,
                             5.0,
                             1L,
                             35L));
-            service.addReview(
+            service.reviewDataLoad(
                     new ReviewRequestDto(
                             comment2,
                             3.5,
                             2L,
                             35L));
-            service.addReview(
+            service.reviewDataLoad(
                     new ReviewRequestDto(
                             comment1,
                             5.0,
                             1L,
                             36L));
-            service.addReview(
+            service.reviewDataLoad(
                     new ReviewRequestDto(
                             comment2,
                             4.5,
