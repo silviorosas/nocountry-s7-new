@@ -25,7 +25,8 @@ public class AppConfig {
 
     private final UserRepository repository;
     protected final String[] ALLOWED_ORIGINS = {
-            "*"
+            
+            "https://home-hero.vercel.app/"
     };
     protected final String[] ALLOWED_METHODS = {
             "GET",
